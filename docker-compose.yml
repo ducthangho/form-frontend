@@ -1,0 +1,17 @@
+version: "3"
+
+volumes:
+  node_modules:
+services: 
+  web:
+    build: .
+    image: 'form-frontend'
+    container_name: 'nginx-webserver'
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - ./:/app/      
+      - node_modules:/app/node_modules/
+    environment:
+      - NODE_ENV=production
+      - DOCKER_BUILDKIT=1
